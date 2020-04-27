@@ -9,6 +9,23 @@ export class FleetDataService {
     this.errors = [];
   }
 
+  getCarByLicense(license) {
+    return this.cars.find(car => car.license === license);
+  }
+
+  getCarsByLicense() {
+    return this.cars.sort((car1, car2) => {
+      if (car1.license < car2.license) return -1;
+      if (car1.license > car2.license) return 1;
+      return 0;
+    });
+  }
+
+  filterCarsByMake(filter) {
+    return this.cars.filter(car => car.make.includes(filter));
+    // return this.cars.filter(car => car.make.indexOf(filter) >= 0);
+  }
+
   loadData(fleet) {
     for (const data of fleet) {
       switch (data.type) {

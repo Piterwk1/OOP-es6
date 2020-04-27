@@ -12,3 +12,12 @@ dataService.loadData(fleet);
 // for (const drone of dataService.drones) console.log(drone.license);
 
 for (const e of dataService.errors) console.log(e.message);
+
+const carLicense = dataService.getCarByLicense('AT2000');
+console.log(carLicense);
+
+const cars = dataService.getCarsByLicense();
+for (const car of cars) console.log(car.license);
+
+const carsFilter = dataService.filterCarsByMake('e');
+for (const car of carsFilter) console.log(car.make);
